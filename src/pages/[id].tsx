@@ -65,14 +65,24 @@ const play = ({ quiz }: { quiz: Quiz }) => {
 
 export default play;
 
-export async function getServerSideProps(context) {
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: "blocking",
+  };
+}
+
+export async function getStaticProps(context) {
   const { params } = context;
   const { id } = params;
 
   try {
     const quiz = await getQuiz(id);
 
-    return { props: { quiz } };
+    return {
+      props: { quiz },
+      revalidate: 60,
+    };
   } catch (error) {
     console.error(error);
     return { props: { quiz: [] } };
