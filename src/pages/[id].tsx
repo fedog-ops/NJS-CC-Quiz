@@ -7,8 +7,7 @@ import { AiOutlineHome } from "react-icons/ai";
 
 interface Question {
   id: number;
-  text: string;
-  choices: string[];
+  questionText: string;
   answer: string;
 }
 

@@ -5,8 +5,7 @@ import { useQuery } from "react-query";
 
 interface Question {
   id: number;
-  text: string;
-  choices: string[];
+  questionText: string;
   answer: string;
 }
 
